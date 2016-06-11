@@ -18,4 +18,10 @@ if you are running another carbon container with a different port, then you will
 
 > docker run -dit --env CARBON_PORT=56360 -p 56360:56360 carbon
 
+In the scalable environment we can design our containers as below:
+
+![alt text](https://github.com/yenonn/docker-graphite/blob/master/docker-graphite.png "docker-graphite image")
+
+
+
 All the based container will be based on the centos 7. if you have any questions please write to Yenonn Hiu <yenonn@gmail.com>
