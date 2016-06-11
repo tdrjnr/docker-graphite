@@ -31,5 +31,5 @@ ADD supervisord.conf /etc
 # setting up the wrapper script to customize the incoming carbon port
 ADD start_carbon.sh /usr/bin/
 
-# start httpd
+# start carbon
 ENTRYPOINT ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
