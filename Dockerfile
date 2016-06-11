@@ -29,10 +29,6 @@ RUN cp /opt/graphite/conf/storage-schemas.conf.example /opt/graphite/conf/storag
 
 RUN cp /opt/graphite/conf/storage-aggregation.conf.example /opt/graphite/conf/storage-aggregation.conf
 
-# commented since it will be overwritten 
-#RUN cp /opt/graphite/webapp/graphite/local_settings.py.example /opt/graphite/webapp/graphite/local_settings.py 
-#RUN cp /opt/graphite/examples/example-graphite-vhost.conf /etc/httpd/conf.d/graphite-vhost.conf
-
 # setting up supervisord
 ADD supervisord.conf /etc
 
@@ -43,7 +39,13 @@ ADD httpd.conf $HTTP_HOME/../conf/
 ADD 10-wsgi.conf $HTTP_HOME/../conf.modules.d/
 ADD local_settings.py $GRAPHITE_HOME/webapp/graphite/
 
+# configure django
+RUN echo "no" | python /opt/graphite/webapp/graphite/manage.py syncdb
+RUN chmod -R 777 /opt/graphite/storage
+
+# expose port
+EXPOSE 80
+
 # start httpd
 ENTRYPOINT ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
  
-EXPOSE 80
