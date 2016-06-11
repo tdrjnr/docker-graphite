@@ -13,9 +13,9 @@ ENV GRAPHITE_HOME /opt/graphite/
 # installation
 RUN yum -y install epel-release
 RUN yum -y install python-pip 
-RUN yum -y install python-devel gcc libev libev-devel pycairo rrdtool-python mod_wsgi git httpd python-setuptools
+RUN yum -y install python-devel gcc libev libev-devel pycairo rrdtool-python mod_wsgi git httpd
 
-RUN pip install supervisor
+RUN yum -y install python-setuptools && easy_install supervisor
 
 RUN pip install --upgrade pip
 
