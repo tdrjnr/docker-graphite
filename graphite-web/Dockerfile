@@ -17,7 +17,7 @@ RUN yum -y install python-devel gcc libev libev-devel pycairo rrdtool-python mod
 
 RUN yum -y install python-setuptools && easy_install supervisor
 
-RUN pip install --upgrade pip
+#RUN pip install --upgrade pip
 
 RUN pip install django==1.8.13 carbon whisper graphite-web django-tagging==0.4.3 pytz==2016.4 twisted==16.2.0
 
